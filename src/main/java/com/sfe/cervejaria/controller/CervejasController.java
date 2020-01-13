@@ -1,12 +1,12 @@
 package com.sfe.cervejaria.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class CervejasController {
     
-	@GetMapping("/cervejas/novo")
+	@RequestMapping("/cervejas/novo")
 	public String novo() {
 		return "cerveja/CadastroCerveja";
 	}

@@ -20,7 +20,6 @@ import com.sfe.cervejaria.controller.CervejasController;
 
 @Configuration
 @ComponentScan(basePackageClasses = {CervejasController.class})
-
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
