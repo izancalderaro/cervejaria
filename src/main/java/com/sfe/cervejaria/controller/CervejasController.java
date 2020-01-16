@@ -26,7 +26,7 @@ public class CervejasController {
 	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
-			model.addAttribute("mensagem", "SKU não pode ser vazio");			
+			model.addAttribute("mensagem", result.getFieldErrors().toString());			
 			return "cerveja/CadastroCerveja";
 		} 
 		
