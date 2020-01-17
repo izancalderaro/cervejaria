@@ -14,26 +14,29 @@ import com.sfe.cervejaria.model.Cerveja;
 @Controller
 public class CervejasController {
 
-	/* @RequestMapping("/cervejas/novo") */
+	// @RequestMapping("/cervejas/novo")
+	// @RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
+	// model.addAttribute(new Cerveja());
+	// model.addAttribute("mensagem", result.getFieldErrors().toString());
+	// model.addAttribute(cerveja);
+
 	@GetMapping("/cervejas/novo")
-	public String novo() {
-		System.out.println("get");
+	public String novo(Cerveja cerveja) {
 		return "cerveja/CadastroCerveja";
 	}
 
-//	@RequestMapping(value = "/cervejas/novo", method = RequestMethod.POST)
-	@PostMapping("/cervejas/novo") 
-	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
+	@PostMapping("/cervejas/novo")
+	public String cadastrar(@Valid Cerveja cerveja, BindingResult result, Model model,
+			RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
-			model.addAttribute("mensagem", result.getFieldErrors().toString());			
-			return "cerveja/CadastroCerveja";
-		} 
-		
-		//Salvar no banco de dados
-		
+			return novo(cerveja);
+		}
+
+		// Salvar no banco de dados
+
 		redirectAttributes.addFlashAttribute("mensagem", "Cerveja cadastrada com sucesso");
-		return "redirect:/cervejas/novo";		
+		return "redirect:/cervejas/novo";
 
 	}
 

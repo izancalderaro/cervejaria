@@ -10,14 +10,37 @@ HTML5
 <body>
 	<h1>Olá! Thymeleaf configurado!</h1>
 
-	<form method="post">
-		<span th:text="${mensagem}"></span>
-		<p></p>
-		<label for="sku">SKU</label> <input type="text" id="sku" name="sku">
-		<br> <label for="nome">Nome</label> <input type="text" id="nome">
-		<br> <label for="descricao">Descrição</label> <br>
-		<textarea rows="10" cols="80" id="descricao" wrap="soft"></textarea>
-		<br> <input type="submit" value="Salvar">
+	<div>	  
+	  <span th:if="${#fields.hasErrors('${cerveja.*}')}" th:errors="${cerveja.*}"></span>
+      	  
+	  <ol>
+	  	<li th:each="erro: ${#fields.detailedErrors('${cerveja.*}')}">
+	  	  <span th:text="${erro.fieldName}"></span>
+	  	  <span th:text="${erro.message}"></span>
+	  	</li>
+	  </ol> 
+	</div>
+
+	<form method="post" th:object="${cerveja}"> 
+		
+		<span th:text="${mensagem}">Erro!</span> 
+		
+		<br> 
+		<label for="sku">SKU</label>
+		<input type="text" th:field="*{sku}"> 
+		
+		<br> 
+		<label for="nome">Nome</label> 
+		<input type="text" th:field="*{nome}">
+		      
+		<br> 
+		<label for="descricao">Descrição</label> 
+		
+		<br> 
+		<textarea rows="10" cols="80" th:field="*{descricao}"></textarea>
+		
+		<br> 
+		<input type="submit" value="Salvar">
 	</form>
 
 </body>

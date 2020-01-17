@@ -7,14 +7,13 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Cerveja {
 
 		
-	@NotBlank
+	@NotBlank(message = "SKU obrigatório")
 	public String sku;
 	
-	@NotBlank
+	@NotBlank(message = "Nome obrigatório")
 	public String nome;
 	
-	@NotBlank
-	@Size(max = 300, min = 30)
+	@Size(min = 20, max = 300, message = "Descrição deve ter entre 20 e 300 caracteres")
 	public String descricao;
 	
 	public String getDescricao() {

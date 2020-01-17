@@ -27,6 +27,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 		return new String[] { "/" };
 	}
 
+	//Não precisa para ativar o UTF-8, basta inserir no ITemplateResolver templateResolver() do arquivo WebConfig
 	@Override
 	protected Filter[] getServletFilters() {
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
