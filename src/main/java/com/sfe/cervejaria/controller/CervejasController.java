@@ -33,11 +33,16 @@ public class CervejasController {
 			return novo(cerveja);
 		}
 
-		// Salvar no banco de dados
-
+	
 		redirectAttributes.addFlashAttribute("mensagem", "Cerveja cadastrada com sucesso");
 		return "redirect:/cervejas/novo";
 
 	}
 
+	@GetMapping("/cervejas/cadastro")
+	public String cadastro() {
+		return "cerveja/cadastro-produto";
+	}
+	
+	
 }
