@@ -8,12 +8,9 @@
 
 <title>Cervejaria</title>
 
-<link rel="stylesheet" type="text/css"
-	href="/cervejaria/layout/stylesheets/vendors.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="/cervejaria/layout/stylesheets/algaworks.min.css" />
-<link rel="stylesheet" type="text/css"
-	href="/cervejaria/layout/stylesheets/application.css" />
+<link rel="stylesheet" type="text/css" 	href="/cervejaria/layout/stylesheets/vendors.min.css" />
+<link rel="stylesheet" type="text/css" 	href="/cervejaria/layout/stylesheets/algaworks.min.css" />
+<link rel="stylesheet" type="text/css" 	href="/cervejaria/layout/stylesheets/application.css" />
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -107,12 +104,21 @@
 
 			<div class="container-fluid">
 
-				<!-- 			<div class="alert  alert-danger  alert-dismissible" role="alert">
+				<div class="alert  alert-danger  alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<i class="fa  fa-exclamation-circle"></i> Já existe um produto com o nome informado.
-				</div> -->
+					<i class="fa  fa-exclamation-circle"></i> 
+					<div>
+						<!-- <ol>
+							<li th:each="erro: ${#fields.detailedErrors('${cerveja.*}')}">
+							<span th:text="${erro.fieldName}"></span> 
+							<span th:text="${erro.message}"></span></li>
+						</ol> -->
+                     <span th:if="${#fields.hasErrors('${cerveja.*}')}"
+							th:errors="${cerveja.*}"></span>
+					</div>
+				</div>
 
 
 				<form method="POST" th:object="${cerveja}" class="form-vertical  js-form-loading">
@@ -138,19 +144,72 @@
 						<textarea id="input-produto-descricao" rows="3" class="form-control"></textarea>
 					</div>
 
+				<div class="row">
+					
+					 <div class="col-sm-3 form-group">			  					  
+					    <label for="estilo">Estilo*</label>
+					    <select id="estilo"  class="form-control" >			
+					     <option value="" selected>Selecione o estilo</option>
+					     <option value="1">estilo 1</option>
+					    </select>					   					  					  
+					 </div>					
+					 
+					 <div class="col-sm-3 form-group">					  
+					    <label for="sabor">Sabor*</label>
+					    <select id="sabor" class="form-control" >
+					     <option value="" selected> Selecione o sabor</option>
+					     <option value="1">Sabor 1</option>					
+					    </select>						   					  
+					 </div>
+			
+					 
+					 <div class="col-sm-3 form-group">					  
+					     <label for="teor">Teor Alcoólico*</label> 
+					     <div class="input-group">
+						   <input id="teor" type="text" class="form-control"/>
+ 						   <div class="input-group-addon">%</div>					  				  					  			 				     
+					     </div>			
+   				     </div>
+					 
+					 <div class="col-lg-3 col-sm-6 form-group">
+					     <label for="origem">Origem</label> 
+					     <div>
+					       <div class="radio radio-inline">				 		
+						 		<input id="origem" type="radio" value="nacional"/>
+						 		<label>Nacional</label>					       
+					       </div>
+	                       				     
+						   <div class="radio radio-inline">				 		
+						 		<input id="origem" type="radio" value="internacional"/>
+						 		<label>Internacional</label>					       
+					       </div>							 
+					     
+					     </div>						     
+					     
+					 </div>
+										
+				</div>	
+
 					<div class="row">
-						<div class="col-sm-3">
-							<div class="form-group">
-								<label for="input-produto-preco">Preço unitário</label> 
-								<input id="input-produto-preco" type="text" class="form-control" placeholder="R$" />
-							</div>
+						<div class="col-sm-3 form-group">
+							<label for="preco">Preço unitário*</label> 
+							<div class="input-group">	
+								<div class="input-group-addon">R$</div>
+								<input id="preco" type="text" class="form-control"/>
+							</div>							
 						</div>
 
-						<div class="col-sm-3">
-							<div class="form-group">
-								<label for="input-produto-estoque">Estoque</label> 
-								<input id="input-produto-estoque" type="text" class="form-control" placeholder="Unidades" />
-							</div>
+						<div class="col-sm-3 form-group">							
+							<label for="comissao">Comissão*</label> 
+							<div class="input-group">								
+								<input id="comissao" type="text" class="form-control" />
+								<div class="input-group-addon">%</div>
+							</div>												
+						</div>
+
+						<div class="col-sm-3 form-group">							
+								<label for="estoque">Estoque*</label> 
+								<input id="estoque" type="text" class="form-control" placeholder="Unidades" />							
 						</div>
 					</div>
 
@@ -159,19 +218,7 @@
 						<a href="#" class="btn  btn-link  aw-btn-link-danger"
 							onclick="excluir()">Excluir este produto</a>
 					</div>
-
-					<h1>Olá! Thymeleaf configurado!</h1>
-
-					<div>
-						<span th:if="${#fields.hasErrors('${cerveja.*}')}"
-							th:errors="${cerveja.*}"></span>
-
-						<ol>
-							<li th:each="erro: ${#fields.detailedErrors('${cerveja.*}')}"><span
-								th:text="${erro.fieldName}"></span> <span
-								th:text="${erro.message}"></span></li>
-						</ol>
-					</div>
+					</form>
 			
 			</div>
 

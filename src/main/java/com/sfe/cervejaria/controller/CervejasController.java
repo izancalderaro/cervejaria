@@ -39,10 +39,6 @@ public class CervejasController {
 
 	}
 
-	@GetMapping("/cervejas/cadastro")
-	public String cadastro() {
-		return "cerveja/cadastro-produto";
-	}
 	
 	
 }
