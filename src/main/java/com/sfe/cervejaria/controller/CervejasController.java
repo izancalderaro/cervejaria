@@ -38,6 +38,11 @@ public class CervejasController {
 		return "redirect:/cervejas/novo";
 
 	}
+	
+	@GetMapping("/cervejas/fragmentos")
+	public String teste() {
+		return "layout/Fragmentos";
+	}
 
 	
 	
