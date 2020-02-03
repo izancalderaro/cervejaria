@@ -24,9 +24,9 @@
 
 <div class="aw-layout-page">
 
-    <div th:replace="layout/Fragmentos :: navbar"></div>
+    <div th:replace="layout/BarraNavegacao :: navbar"></div>
 
-	<div th:replace="layout/Fragmentos :: sidebar"></div>
+	<div th:replace="layout/MenuLateral :: sidebar"></div>
 
 		<section class="aw-layout-content  js-content"  layout:fragment="conteudo">
 		
@@ -35,13 +35,13 @@
 </div>
 
 
-<div th:include="layout/Fragmentos :: footer"></div>
+<div th:replace="layout/Rodape :: footer"></div>
 
 
 	<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
 	<script th:src="@{/layout/javascripts/algaworks.min.js}"></script>	
     <script th:src="@{/layout/javascripts/vendors/jquery.mask.min.js}"></script>
-	<script th:src="@{/layout/javascripts/cervejaria.js}"></script>
+	<script th:src="@{/javascripts/cervejaria.js}"></script>
 
 </body>
 </html>

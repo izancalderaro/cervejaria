@@ -17,6 +17,7 @@
 
 			<div class="container-fluid">
 
+               <div th:if="${#fields.hasErrors('${cerveja.*}')}">
 				<div class="alert  alert-danger  alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -28,39 +29,50 @@
 							<span th:text="${erro.fieldName}"></span> 
 							<span th:text="${erro.message}"></span></li>
 						</ol> -->
-                     <span th:if="${#fields.hasErrors('${cerveja.*}')}"
-							th:errors="${cerveja.*}"></span>
+						<span th:errors="${cerveja.*}"></span>
 					</div>
 				</div>
-
-
+               </div>
+				
+				
+				<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span class="glyphicon glyphicon-saved"></span> 
+					<div>
+						<span th:text="${mensagem}"></span>
+					</div>
+				</div>
+								
+	
 				<form method="POST" th:object="${cerveja}" class="form-vertical  js-form-loading">
 
 					<div class="row">
 					 
 					  <div class="col-sm-2 form-group">
 						<label for="input-produto-sku">SKU</label> 
-						<input id="input-produto-sku" type="text" class="form-control" />
+						<input id="input-produto-sku" type="text" class="form-control" th:field="*{sku}"/>
  					 
  					 </div>
 					
 					 
 					 <div class="col-sm-10 form-group">
 						<label for="input-produto-nome">Nome</label> 
-						<input id="input-produto-nome" type="text" class="form-control" />
+						<input id="input-produto-nome" type="text" class="form-control" th:field="*{nome}"/>
  					 </div>
 					
 					</div>
 
 					<div class="form-group">
 						<label for="input-produto-descricao">Descrição</label>
-						<textarea id="input-produto-descricao" rows="3" class="form-control"></textarea>
+						<textarea id="input-produto-descricao" rows="3" class="form-control" th:field="*{descricao}"></textarea>
 					</div>
 
 				    <div class="row">					
 					 <div class="col-sm-3 form-group">			  					  
 					    <label for="estilo">Estilo*</label>
-					    <select id="estilo"  class="form-control" >			
+					    <select id="estilo"  class="form-control" th:field="*{estilo}">			
 					     <option value="" selected>Selecione o estilo</option>
 					     <option value="1">estilo 1</option>
 					    </select>					   					  					  
@@ -68,7 +80,7 @@
 					 
 					 <div class="col-sm-3 form-group">					  
 					    <label for="sabor">Sabor*</label>
-					    <select id="sabor" class="form-control" >
+					    <select id="sabor" class="form-control" th:field="*{sabor}">
 					     <option value="" selected> Selecione o sabor</option>
 					     <option value="1">Sabor 1</option>					
 					    </select>						   					  
@@ -78,7 +90,7 @@
 					 <div class="col-sm-3 form-group">					  
 					     <label for="teor">Teor Alcoólico*</label> 
 					     <div class="input-group">
-						   <input id="teor" type="text" class="form-control js-plain" placeholder="000"/>
+						   <input id="teor" type="text" class="form-control js-plain" placeholder="000" th:field="*{teor}"/>
  						   <div class="input-group-addon">%</div>					  				  					  			 				     
 					     </div>			
    				     </div>
@@ -87,12 +99,12 @@
 					     <label for="origem">Origem</label> 
 					     <div>
 					       <div class="radio radio-inline">				 		
-						 		<input id="origem" type="radio" value="nacional"/>
+						 		<input id="origem" type="radio" value="n" th:field="*{origem}"/>
 						 		<label>Nacional</label>					       
 					       </div>
 	                       				     
 						   <div class="radio radio-inline">				 		
-						 		<input id="origem" type="radio" value="internacional"/>
+						 		<input id="origem" type="radio" value="i" th:field="*{origem}"/>
 						 		<label>Internacional</label>					       
 					       </div>							 
 					     
@@ -107,21 +119,21 @@
 							<label for="preco">Preço unitário*</label> 
 							<div class="input-group">	
 								<div class="input-group-addon">R$</div>
-								<input id="preco" type="text" class="form-control js-decimal" placeholder="0,00"/>
+								<input id="preco" type="text" class="form-control js-decimal" placeholder="0,00" th:field="*{preco}"/>
 							</div>							
 						</div>
 
 						<div class="col-sm-3 form-group">							
 							<label for="comissao">Comissão*</label> 
 							<div class="input-group">								
-								<input id="comissao" type="text" class="form-control js-plain" placeholder="000" />
+								<input id="comissao" type="text" class="form-control js-plain" placeholder="000" th:field="*{comissao}"/>
 								<div class="input-group-addon">%</div>
 							</div>												
 						</div>
 
 						<div class="col-sm-3 form-group">							
 								<label for="estoque">Estoque*</label> 
-								<input id="estoque" type="text" class="form-control js-plain" placeholder="000" />							
+								<input id="estoque" type="text" class="form-control js-plain" placeholder="000" th:field="*{estoque}"/>							
 						</div>
 					</div>
 
