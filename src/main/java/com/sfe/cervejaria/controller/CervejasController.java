@@ -21,7 +21,7 @@ public class CervejasController {
 	// model.addAttribute(cerveja);
 
 	@GetMapping("/cervejas/novo")
-	public String novo(Cerveja cerveja) {
+	public String CervejasNovo(Cerveja cerveja) {
 		return "cerveja/CadastroCerveja";
 	}
 
@@ -30,7 +30,7 @@ public class CervejasController {
 			RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
-			return novo(cerveja);
+			return CervejasNovo(cerveja);
 		}
 
 	
@@ -44,6 +44,10 @@ public class CervejasController {
 		return "layout/Fragmentos";
 	}
 
+	@GetMapping("/clientes/novo")
+	public String ClientesNovo() {
+		return "cerveja/CadastroCliente";
+	}
 	
 	
 }

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutPadrao">
+
+<body>
+		<section class="aw-layout-content  js-content" layout:fragment="conteudo">
+
+			<div class="page-header">
+				<div class="container-fluid">
+					<h1>Cadastro de Clientes</h1>
+				</div>
+			</div>
+
+			<div class="container-fluid">
+
+              <!--  <div th:if="${#fields.hasErrors('${cerveja.*}')}">
+				<div class="alert  alert-danger  alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<i class="fa  fa-exclamation-circle"></i> 
+					<div>
+						<ol>
+							<li th:each="erro: ${#fields.detailedErrors('${cerveja.*}')}">
+							<span th:text="${erro.fieldName}"></span> 
+							<span th:text="${erro.message}"></span></li>
+						</ol>
+						<span th:errors="${cerveja.*}"></span>
+					</div>
+				</div>
+               </div> -->
+				
+				
+				<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span class="glyphicon glyphicon-saved"></span> 
+					<div>
+						<span th:text="${mensagem}"></span>
+					</div>
+				</div>
+								
+	
+				<form method="POST" class="form-vertical  js-form-loading">
+
+					<div class="row">					 
+					  <div class="col-sm-12 form-group">
+						<label for="input-produto-sku">Nome</label> 
+						<input id="input-produto-sku" type="text" class="form-control"/> 					 
+ 					 </div> 					 
+ 					</div> 					 
+					 
+					<div class="row"> 
+					 <div class="col-sm-2 form-group">
+						<label for="tipopessoa">Tipo pessoa</label> 
+     					<div>
+					       <div class="radio radio-inline">				 		
+						 		<input id="tipopessoa" type="radio" value="f" />
+						 		<label>Física</label>					       
+					       </div>
+	                       				     
+						   <div class="radio radio-inline">				 		
+						 		<input id="tipopessoa" type="radio" value="j" />
+						 		<label>Jurídica</label>					       
+					       </div>						
+ 					    </div>					
+					</div>
+
+						<div class="form-group">
+							<label for="cnpj">CNPJ</label>
+							<input type="text" id="cnpj" class="form-control" />
+						</div>
+					</div>
+
+				    <div class="row">					
+					 <div class="col-sm-3 form-group">			  					  
+					   <label for="estilo">Estilo*</label>
+					   <div class="bw-field-action">
+					     <select id="estilo"  class="form-control" th:field="*{estilo}">			
+					      <option value="" selected>Selecione o estilo</option>
+					      <option value="1">estilo 1</option>
+					     </select>
+					   
+					   	  <div class="bw-field-action__icon">
+					   		<a href="#" data-toggle="modal" data-target="#modalCadastroRapidoEstilo">
+					   		 <i class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
+					   		</a>	
+					   	  </div>
+					   
+					    </div>
+					 </div>					
+					 
+					 <div class="col-sm-3 form-group">					  
+					    <label for="sabor">Sabor*</label>
+					    <select id="sabor" class="form-control" th:field="*{sabor}">
+					     <option value="" selected> Selecione o sabor</option>
+					     <option value="1">Sabor 1</option>					
+					    </select>						   					  
+					 </div>
+			
+					 
+					 <div class="col-sm-3 form-group">					  
+					     <label for="teor">Teor Alcoólico*</label> 
+					     <div class="input-group">
+						   <input id="teor" type="text" class="form-control js-plain" placeholder="000" th:field="*{teor}"/>
+ 						   <div class="input-group-addon">%</div>					  				  					  			 				     
+					     </div>			
+   				     </div>
+					 
+				<!-- 	 <div class="col-lg-3 col-sm-6 form-group">
+					     <label for="origem">Origem</label> 
+					     <div>
+					       <div class="radio radio-inline">				 		
+						 		<input id="origem" type="radio" value="n" th:field="*{origem}"/>
+						 		<label>Nacional</label>					       
+					       </div>
+	                       				     
+						   <div class="radio radio-inline">				 		
+						 		<input id="origem" type="radio" value="i" th:field="*{origem}"/>
+						 		<label>Internacional</label>					       
+					       </div>							 
+					     
+					     </div>						     
+					     
+					 </div> -->
+										
+				   </div>	
+
+				<div class="row">
+						<div class="col-sm-3 form-group">
+							<label for="preco">Preço unitário*</label> 
+							<div class="input-group">	
+								<div class="input-group-addon">R$</div>
+								<input id="preco" type="text" class="form-control js-decimal" placeholder="0,00" th:field="*{preco}"/>
+							</div>							
+						</div>
+
+						<div class="col-sm-3 form-group">							
+							<label for="comissao">Comissão*</label> 
+							<div class="input-group">								
+								<input id="comissao" type="text" class="form-control js-plain" placeholder="000" th:field="*{comissao}"/>
+								<div class="input-group-addon">%</div>
+							</div>												
+						</div>
+
+						<div class="col-sm-3 form-group">							
+								<label for="estoque">Estoque*</label> 
+								<input id="estoque" type="text" class="form-control js-plain" placeholder="000" th:field="*{estoque}"/>							
+						</div>
+					</div>
+
+				<div class="form-group">
+						<button class="btn  btn-primary" type="submit">Salvar</button>																									 
+					</div> 
+			  
+			   </form>
+			
+			</div>
+			
+
+		</section>
+
+
+</body>
+</html>
