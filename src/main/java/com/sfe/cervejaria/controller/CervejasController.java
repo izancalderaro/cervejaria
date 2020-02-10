@@ -49,5 +49,9 @@ public class CervejasController {
 		return "cerveja/CadastroCliente";
 	}
 	
+	@GetMapping("/usuarios/novo")
+	public String UsuariosNovo() {
+		return "cerveja/CadastroUsuario";
+	}
 	
 }
