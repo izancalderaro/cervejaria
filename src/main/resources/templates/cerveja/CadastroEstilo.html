@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/LayoutPadrao">
+
+<head>
+	<title>Cadastro de cidade</title>
+</head>
+
+
+<body>
+		<section class="aw-layout-content  js-content" layout:fragment="conteudo">
+
+			<div class="page-header">
+				<div class="container-fluid">
+					<h1>Cadastro de Cidade</h1>
+				</div>
+			</div>
+
+			<div class="container-fluid">
+
+              <!--  <div th:if="${#fields.hasErrors('${cerveja.*}')}">
+				<div class="alert  alert-danger  alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<i class="fa  fa-exclamation-circle"></i> 
+					<div>
+						<ol>
+							<li th:each="erro: ${#fields.detailedErrors('${cerveja.*}')}">
+							<span th:text="${erro.fieldName}"></span> 
+							<span th:text="${erro.message}"></span></li>
+						</ol>
+						<span th:errors="${cerveja.*}"></span>
+					</div>
+				</div>
+               </div> -->
+				
+				
+				<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span class="glyphicon glyphicon-saved"></span> 
+					<div>
+						<span th:text="${mensagem}"></span>
+					</div>
+				</div>
+								
+	
+				<form method="POST" class="form-vertical  js-form-loading">
+					
+					<div class="row">
+						<div class="form-group  col-sm-12">
+							<label for="estilo">Estilo</label>
+							<input type="text" class="form-control" id="estilo" autofocus="autofocus"/>
+						</div>
+					</div>
+					
+					<button type="submit" class="btn  btn-primary">Salvar</button>
+			  
+			   </form>
+			
+			</div>
+			
+
+		</section>
+
+
+</body>
+</html>

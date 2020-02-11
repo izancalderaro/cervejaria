@@ -4,6 +4,11 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout/LayoutPadrao">
 
+<head>
+	<title>Cadastro de clientes</title>
+</head>
+
+
 <body>
 		<section class="aw-layout-content  js-content" layout:fragment="conteudo">
 
@@ -49,7 +54,7 @@
 					<div class="row">					 
 					  <div class="col-sm-12 form-group">
 						<label for="input-produto-sku">Nome</label> 
-						<input id="input-produto-sku" type="text" class="form-control"/> 					 
+						<input id="input-produto-sku" type="text" class="form-control" autofocus="autofocus"/> 					 
  					 </div> 					 
  					</div> 					 
 					 
@@ -58,12 +63,12 @@
 						<label for="tipopessoa">Tipo pessoa</label> 
      					<div>
 					       <div class="radio radio-inline">				 		
-						 		<input id="tipopessoa" type="radio" value="f" />
+						 		<input id="tipopessoa" type="radio" value="f" name="tipopessoa"/>
 						 		<label>Física</label>					       
 					       </div>
 	                       				     
 						   <div class="radio radio-inline">				 		
-						 		<input id="tipopessoa" type="radio" value="j" />
+						 		<input id="tipopessoa" type="radio" value="j" name="tipopessoa"/>
 						 		<label>Jurídica</label>					       
 					       </div>						
  					    </div>					

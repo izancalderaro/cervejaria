@@ -3,13 +3,16 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="layout/LayoutPadrao">
+<head>
+	<title>Cadastro de cervejas</title>
+</head>
 
 <body>
 		<section class="aw-layout-content  js-content" layout:fragment="conteudo">
 
 			<div class="page-header">
 				<div class="container-fluid">
-					<h1>Cadastro de Cerveja</h1>
+					<h1>Cadastro de Cervejas</h1>
 				</div>
 			</div>
 
@@ -50,7 +53,7 @@
 					 
 					  <div class="col-sm-2 form-group">
 						<label for="input-produto-sku">SKU</label> 
-						<input id="input-produto-sku" type="text" class="form-control" th:field="*{sku}"/>
+						<input id="input-produto-sku" type="text" class="form-control" th:field="*{sku}"/ autofocus="autofocus">
  					 
  					 </div>
 					
@@ -151,7 +154,6 @@
 			   </form>
 			
 			</div>
-			
 
 		</section>
 

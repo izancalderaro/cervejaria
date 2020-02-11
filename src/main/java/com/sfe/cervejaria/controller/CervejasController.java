@@ -54,4 +54,14 @@ public class CervejasController {
 		return "cerveja/CadastroUsuario";
 	}
 	
+	@GetMapping("/cidades/novo")
+	public String CidadesNovo() {
+		return "cerveja/CadastroCidade";
+	}
+	
+	@GetMapping("/estilos/novo")
+	public String EstiloNovo() {
+		return "cerveja/CadastroEstilo";
+	}
+	
 }
