@@ -41,9 +41,13 @@ public class Cerveja {
 	@NumberFormat(pattern="#,##0.00")	
 	public BigDecimal preco;
 	
+	@DecimalMin(value="2", message="Comissão não pode ser menor que 2%")
+	@DecimalMax(value="100", message="Comissão não pode ser maior que 100%")	
 	@NotNull(message="Comissão obrigatório")	
 	public Byte comissao;
 	
+	@DecimalMin(value="2", message="Estoque não pode ser menor que 2%")
+	@DecimalMax(value="100", message="Comissão não pode ser maior que 100%")	
 	@NotNull(message="Estoque obrigatório")
 	public Short estoque;
 

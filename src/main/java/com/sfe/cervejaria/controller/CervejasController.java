@@ -1,7 +1,10 @@
 package com.sfe.cervejaria.controller;
 
+
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,10 +22,19 @@ public class CervejasController {
 	// model.addAttribute(new Cerveja());
 	// model.addAttribute("mensagem", result.getFieldErrors().toString());
 	// model.addAttribute(cerveja);
+	/*   if (logger.isDebugEnabled()) {
+        	logger.debug("O objeto cerveja é:" + cerveja);                	
+        }*/
 
+	private static final Logger logger = LoggerFactory.getLogger(CervejasController.class);
+	
 	@GetMapping("/cervejas/novo")
 	public String CervejasNovo(Cerveja cerveja) {
-		return "cerveja/CadastroCerveja";
+		
+        logger.error("the built-in ERROR level");
+        
+
+        return "cerveja/CadastroCerveja";
 	}
 
 	@PostMapping("/cervejas/novo")

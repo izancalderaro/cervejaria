@@ -8,7 +8,7 @@
 	</Appenders>
 	
 	<Loggers>
-		<Logger name="com.algaworks.brewer.controller" level="error"/>
+		<Logger name="com.sfe.cervejaria.controller" level="error"/>
 	
 		<Root level="error">
 			<AppenderRef ref="Console" />
